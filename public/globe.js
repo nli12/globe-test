@@ -18,7 +18,7 @@ DAT.Globe = function(container, opts) {
   
   var colorFn = opts.colorFn || function(x) {
     var c = new THREE.Color();
-    c.setHSL( ( 0.6 - x ), 1.0, 0.5 );
+    c.setHSL( 0.01, 1.0, 0.5 );
     return c;
   };
   var imgDir = opts.imgDir || '/globe/';
@@ -173,7 +173,7 @@ DAT.Globe = function(container, opts) {
     opts.format = opts.format || 'magnitude'; // other option is 'legend'
     if (opts.format === 'magnitude') {
       step = 3;
-      colorFnWrapper = function(data, i) { return colorFn(data[i+2]*0.375); }
+      colorFnWrapper = function(data, i) { return colorFn(data[i+2]); }
     } else if (opts.format === 'legend') {
       step = 4;
       colorFnWrapper = function(data, i) { return colorFn(data[i+3]); }
